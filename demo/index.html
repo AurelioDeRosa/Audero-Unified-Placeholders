@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Audero Unified Placeholders Demo - Created by Aurelio De Rosa</title>
+      <meta charset="UTF-8" />
+      <style>
+         body
+         {
+            width: 500px;
+            margin: 0 auto;
+         }
+
+         input,
+         textarea,
+         button
+         {
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            height: 2em;
+            width: 48%;
+            margin-bottom: 1em;
+         }
+
+         input[type="submit"],
+         input[type="reset"],
+         button
+         {
+            width: auto;
+            vertical-align: top;
+         }
+
+         .placeholder-class
+         {
+            color: #FCAD22 !important;
+            font-style: italic;
+         }
+      </style>
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+      <script src="../src/jquery.auderoUnifiedPlaceholders.js"></script>
+      <script>
+         $(document).ready(function() {
+            $("#search-form *").auderoUnifiedPlaceholders();
+            $("#registration-form *").auderoUnifiedPlaceholders({
+               overrideNative: true,
+               style: {
+                  "color": "#000000",
+                  "font-weight": "bold"
+               }
+            });
+            $("#search-number-form *").auderoUnifiedPlaceholders({
+               overrideNative: true,
+               style: {
+                  "font-style": "italic",
+                  "letter-spacing": "0.5em"
+               }
+            });
+            $("#contact-form *").auderoUnifiedPlaceholders({
+               overrideNative: true,
+               className: "placeholder-class",
+               style: {
+                  "font-style": "normal"
+               }
+            });
+            $("#reset-registration-form").click(function(event) {
+               event.preventDefault();
+               $("#registration-form *").auderoUnifiedPlaceholders("reset");
+            });
+            $("#enable-placeholders").click(function(event) {
+               event.preventDefault();
+               $("#search-number-form *").auderoUnifiedPlaceholders("enable");
+            });
+            $("#disable-placeholders").click(function(event) {
+               event.preventDefault();
+               $("#search-number-form *").auderoUnifiedPlaceholders("disable");
+            });
+            $("#destroy-contact-form").click(function(event) {
+               event.preventDefault();
+               $("#contact-form *").auderoUnifiedPlaceholders("destroy");
+            });
+         });
+      </script>
+   </head>
+   <body>
+      <h1>Audero Unified Placeholders Demo</h1>
+      <h2>Form 1 - Search form</h2>
+      <p>
+         This form shows you how, by default, Audero Unified Placeholders respects the native support of the
+         placeholder attribute while it emulates and styles it perfectly for those that don't support it.
+      </p>
+      <form name="search-form" id="search-form" action="#" method="get">
+         <input type="search" name="searched-text" placeholder="Search for something..." />
+         <input type="submit" value="Search" />
+      </form>
+      <h2>Form 2 - Registration form</h2>
+      <p>
+         This form shows you how you can overwrite the attribute's support in modern browsers and also apply
+         a defined style to the placeholder. In this case, I applied the black color and the bold.
+      </p>
+      <p>
+         This example teach you also an important thing. Since the plugin uses the elements' value property
+         to emulate the placeholder attribute. This means that using the usual
+         <code>&lt;input type="reset" /&gt;</code> element to reset the fields, will delete all the values
+         as well as the emulated placeholders. To avoid this problem, you can use the <code>reset</code>
+         method of Audero Unified Placeholders. To see it in action, you can click the button called
+         "Reset Registration form".
+      </p>
+      <p>
+         You can read more on this in the <a href="../README.md">documentation</a>.
+      </p>
+      <form name="registration-form" id="registration-form" action="#" method="get">
+         <input type="text" name="name" placeholder="Name" />
+         <input type="text" name="surname" placeholder="Surname" />
+         <input type="email" name="email" placeholder="Email" />
+         <input type="tel" name="phone-number" placeholder="Phone number" />
+         <input type="submit" value="Register" />
+         <input type="reset" value="Reset" />
+      </form>
+      <button id="reset-registration-form">Reset Registration form</button>
+      <h2>Form 3 - Search number form</h2>
+      <p>
+         As said in the previous demo, this polyfill uses the value property of the elements. Chances there are
+         that in your form you are using a plugin to validate the data inserted by the user. This means that
+         the validator plugin will validate the values written as well as the placeholders. Another problematic
+         case occurs when the user don't fill a field. In this circumstance, you probably want that the server
+         will receive the field's value as empty instead of valorized with your placeholder.
+      </p>
+      <p>
+         This example shows how to solve these cases. The solution constists in simply disable the plugin
+         before validate the data or sending them to the server. To achieve this goal, you can use the
+         <code>disable</code> method of Audero Unified Placeholders. Once the data are verified, if some of
+         them are wrong, you can enable again the plugin using the <code>enable</code> method.
+      </p>
+      <form name="search-number-form" id="search-number-form" action="#" method="get">
+         <input type="text" name="name" placeholder="Name" />
+         <input type="text" name="surname" placeholder="Surname" />
+         <input type="text" name="address" placeholder="Address" />
+         <input type="text" name="city" placeholder="City" />
+         <input type="submit" value="Search" />
+      </form>
+      <button id="enable-placeholders">Enable placeholders</button>
+      <button id="disable-placeholders">Disable placeholders</button>
+      <h2>Form 4 - Contact form</h2>
+      <p>
+         This example shows you how to destroy the style and the changes applied by this polyfill. The button
+         "Destroy Contact form" uses the <code>destroy</code> method of the plugin to achieve this goal.
+      </p>
+      <form name="contact-form" id="contact-form" action="#" method="get">
+         <input type="text" name="name" placeholder="Name" />
+         <input type="text" name="surname" placeholder="Surname" />
+         <input type="email" name="email" placeholder="Email" />
+         <input type="text" name="subject" placeholder="Subject" />
+         <textarea name="message" placeholder="Your message here..."></textarea>
+         <input type="submit" value="Submit" />
+      </form>
+      <button id="destroy-contact-form">Destroy Contact form</button>
+   </body>
+</html>
