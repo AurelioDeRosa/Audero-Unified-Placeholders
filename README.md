@@ -1,6 +1,9 @@
 # Audero Unified Placeholders #
 [Audero Unified Placeholders](https://github.com/AurelioDeRosa/Audero-Unified-Placeholders) is a very lightweight cross-browser jQuery plugin to emulate the HTML5 placeholder attribute on browsers that don't support it. This placeholder's polyfill emulates perfectly the native behavior hiding the placeholders' text on the first input of the user and not on focus. In addition, it allows you to style the placeholders' texts using CSS and to override the browsers' native support (in those who had).
 
+## Demo ##
+A live demo is available [here](http://htmlpreview.github.io/?https://github.com/AurelioDeRosa/Audero-Unified-Placeholders/blob/master/demo/index.html).
+
 ## Requirements ##
 Being a jQuery plugin, the only requirement is [jQuery](http://www.jquery.com).
 
@@ -14,7 +17,7 @@ To install this plugin you need to include the script **after** the [jQuery](htt
     <script src="path/to/jquery.auderoUnifiedPlaceholders.js"></script>
 
 ## Usage ##
-Using this plugin is very simple. Just call the `auderoUnifiedPlaceholders()` method on the element(s) you want to apply the placeholder, typically the <input>s and the <textarea>s of a <form>.
+Using this plugin is very simple. Just call the `auderoUnifiedPlaceholders()` method on the element(s) you want to apply the placeholder, typically the `<input>`s and the `<textarea>`s of a `<form>`.
 For example, let that you have the following code:
 
     <form name="registration-form" id="registration-form" action="#" method="get">

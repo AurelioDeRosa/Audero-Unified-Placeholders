@@ -1,6 +1,6 @@
 {
    "name": "auderoUnifiedPlaceholders",
-   "version": "1.0.0",
+   "version": "1.0.1",
    "title": "Audero Unified Placeholders",
    "author": {
       "name": "Aurelio De Rosa",
@@ -27,7 +27,7 @@
    ],
    "homepage": "https://github.com/AurelioDeRosa/Audero-Unified-Placeholders",
    "docs": "https://github.com/AurelioDeRosa/Audero-Unified-Placeholders",
-   "demo": "https://github.com/AurelioDeRosa/Audero-Unified-Placeholders",
+   "demo": "http://htmlpreview.github.io/?https://github.com/AurelioDeRosa/Audero-Unified-Placeholders/blob/master/demo/index.html",
    "bugs": "https://github.com/AurelioDeRosa/Audero-Unified-Placeholders/issues",
    "maintainers": [
       {
