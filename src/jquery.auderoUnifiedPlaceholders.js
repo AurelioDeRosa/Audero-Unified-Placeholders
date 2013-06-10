@@ -7,7 +7,7 @@
  * and to override the browsers' native support (in those who had).
  *
  * @author  Aurelio De Rosa <aurelioderosa@gmail.com>
- * @version 1.0.1
+ * @version 1.0.2
  * @link    https://github.com/AurelioDeRosa/Audero-Unified-Placeholders
  * @license Dual licensed under MIT (http://www.opensource.org/licenses/MIT)
  * and GPL-3.0 (http://opensource.org/licenses/GPL-3.0)
@@ -40,11 +40,14 @@
             .each(function(index, element) {
                var $element = $(element);
                var placeholder = $element.attr("placeholder");
-               // Remove the real placeholder attribute
                $element.attr({
                   "data-audero-unp-text": placeholder,
                   "data-audero-unp-typed": "false"
                });
+               // Delete the value so the style will be applied on refresh in Firefox #3
+               $element.val("");
+
+               // Remove the real placeholder attribute
                $element.removeAttr("placeholder");
 
                $element
@@ -59,25 +62,29 @@
                   }
                })
                .on("keydown.auderoUnifiedPlaceholders", function() {
-                  $(this).removeClass(options.className);
+                  var $this = $(this);
+                  $this.removeClass(options.className);
                   for(var rule in options.style) {
-                     $(this).css(rule, "");
+                     $this.css(rule, "");
                   }
-                  if ($(this).val() === placeholder && $(this).attr("data-audero-unp-typed") === "false")
-                     $(this).val("");
-                  else
-                     $(this).attr("data-audero-unp-typed", "true");
+                  if ($this.val() === placeholder && $this.attr("data-audero-unp-typed") === "false") {
+                     $this.val("");
+                  } else {
+                     $this.attr("data-audero-unp-typed", "true");
+                  }
                })
                .on("keyup.auderoUnifiedPlaceholders", function() {
-                  if ($(this).val() === "") {
-                     $(this)
+                  var $this = $(this);
+                  if ($this.val() === "") {
+                     $this
                      .trigger("blur.auderoUnifiedPlaceholders")
                      .trigger("focus.auderoUnifiedPlaceholders");
                   }
                })
                .on("blur.auderoUnifiedPlaceholders", function () {
-                  if ($(this).val() === "") {
-                     $(this)
+                  var $this = $(this);
+                  if ($this.val() === "") {
+                     $this
                      .attr("data-audero-unp-typed", "false")
                      .val(placeholder)
                      .addClass(options.className)
@@ -91,29 +98,31 @@
       enable: function() {
          return this.each(function() {
                    var placeholder = "";
-                   if (typeof $(this).attr("placeholder") !== "undefined")
-                      placeholder = $(this).attr("placeholder");
-                   else if (typeof $(this).attr("data-audero-unp-text") !== "undefined")
-                      placeholder = $(this).attr("data-audero-unp-text");
+                   var $this = $(this);
+                   if (typeof $this.attr("placeholder") !== "undefined")
+                      placeholder = $this.attr("placeholder");
+                   else if (typeof $this.attr("data-audero-unp-text") !== "undefined")
+                      placeholder = $this.attr("data-audero-unp-text");
                    else
                       return;
 
-                   if ($(this).val() === "")
-                      $(this).val(placeholder);
+                   if ($this.val() === "")
+                      $this.val(placeholder);
                });
       },
       disable: function() {
          return this.each(function() {
                    var placeholder = "";
-                   if (typeof $(this).attr("placeholder") !== "undefined")
-                      placeholder = $(this).attr("placeholder");
-                   else if (typeof $(this).attr("data-audero-unp-text") !== "undefined")
-                      placeholder = $(this).attr("data-audero-unp-text");
+                   var $this = $(this);
+                   if (typeof $this.attr("placeholder") !== "undefined")
+                      placeholder = $this.attr("placeholder");
+                   else if (typeof $this.attr("data-audero-unp-text") !== "undefined")
+                      placeholder = $this.attr("data-audero-unp-text");
                    else
                       return;
 
-                   if ($(this).val() === placeholder && $(this).attr("data-audero-unp-typed") === "false")
-                      $(this).val("");
+                   if ($this.val() === placeholder && $this.attr("data-audero-unp-typed") === "false")
+                      $this.val("");
                });
       },
       reset: function() {
@@ -133,15 +142,14 @@
                 .trigger("keydown.auderoUnifiedPlaceholders")
                 .off("focus.auderoUnifiedPlaceholders keydown.auderoUnifiedPlaceholders blur.auderoUnifiedPlaceholders")
                 .each(function(index, element) {
+                   var $element = $(element);
                    if (
-                        typeof $(element).attr("data-audero-unp-text") !== "undefined"
-                        && typeof $(element).attr("placeholder") === "undefined"
+                        typeof $element.attr("data-audero-unp-text") !== "undefined"
+                        && typeof $element.attr("placeholder") === "undefined"
                       ) {
-                            $(element).attr("placeholder", $(element).attr("data-audero-unp-text"));
+                            $element.attr("placeholder", $element.attr("data-audero-unp-text"));
                       }
-                      $(element)
-                     .removeAttr("data-audero-unp-text")
-                     .removeAttr("data-audero-unp-typed");
+                      $element.removeAttr("data-audero-unp-text data-audero-unp-typed");
                 });
       }
    };
