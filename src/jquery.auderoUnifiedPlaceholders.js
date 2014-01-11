@@ -7,7 +7,7 @@
  * and to override the browsers' native support (in those who had).
  *
  * @author  Aurelio De Rosa <aurelioderosa@gmail.com>
- * @version 1.0.2
+ * @version 1.0.3
  * @link    https://github.com/AurelioDeRosa/Audero-Unified-Placeholders
  * @license Dual licensed under MIT (http://www.opensource.org/licenses/MIT)
  * and GPL-3.0 (http://opensource.org/licenses/GPL-3.0)
