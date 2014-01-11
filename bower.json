@@ -9,7 +9,7 @@
       "placeholder",
       "polyfill"
    ],
-   "main": "jquery.auderoUnifiedPlaceholders.js",
+   "main": "src/jquery.auderoUnifiedPlaceholders.js",
    "dependencies": {
       "jquery": ">=1.2"
    },
