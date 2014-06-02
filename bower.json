@@ -1,6 +1,6 @@
 {
    "name": "audero-unified-placeholders",
-   "version": "1.0.4",
+   "version": "1.0.5",
    "location": "git://github.com/AurelioDeRosa/Audero-Unified-Placeholders.git",
    "description": "Audero Unified Placeholders is a very lightweight cross-browser jQuery plugin to emulate the HTML5 placeholder attribute on browsers that don't support it.",
    "keywords": [
