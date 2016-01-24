@@ -6,6 +6,14 @@ module.exports = function (grunt) {
    grunt.initConfig({
       pkg: grunt.file.readJSON('package.json'),
 
+      jscs: {
+         options: {
+            config: '.jscsrc',
+            fix: true
+         },
+         dist: '<%= jshint.src %>'
+      },
+
       jshint: {
          options: {
             jshintrc: '.jshintrc',
@@ -31,6 +39,7 @@ module.exports = function (grunt) {
    ]);
 
    grunt.registerTask('default', [
+      'jscs',
       'jshint',
       'build'
    ]);
