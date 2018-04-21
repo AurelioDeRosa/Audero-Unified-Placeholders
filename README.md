@@ -1,4 +1,6 @@
 # Audero Unified Placeholders #
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/AurelioDeRosa/Audero-Unified-Placeholders.svg)](https://greenkeeper.io/)
 [Audero Unified Placeholders](https://github.com/AurelioDeRosa/Audero-Unified-Placeholders) is a very lightweight cross-browser jQuery plugin to emulate the HTML5 placeholder attribute on browsers that don't support it. This placeholder's polyfill emulates perfectly the native behavior hiding the placeholders' text on the first input of the user and not on focus. In addition, it allows you to style the placeholders' texts using CSS and to override the browsers' native support (in those who had).
 
 ## Demo ##
